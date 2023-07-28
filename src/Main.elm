@@ -4,6 +4,7 @@ import Browser
 import State exposing (update)
 import Types exposing (..)
 import View exposing (view)
+import Pages.Welcome
 
 
 init : Model

@@ -1,29 +1,26 @@
 module View exposing (view)
 
+import Constants
 import Element exposing (..)
 import Html exposing (Html)
-import Parts.Banners exposing (statusView, titleView)
-import Parts.Constants exposing (font)
-import Parts.Tools exposing (toHtml)
+import Md.Parser exposing (parseView)
+import Pages.Welcome
+import Pieces exposing (barView)
 import Types exposing (Model, Msg)
 
 
 view : Model -> { title : String, body : List (Html Msg) }
 view model =
-    let
-        homeView : Element Msg
-        homeView =
-            column [ width fill ]
-                [ statusView model.status model.name
-                , titleView model.title
-                ]
-
-        bodyView : Element Msg
-        bodyView =
-            column [ height fill, width fill, padding 20, font ]
-                [ homeView
-                ]
-    in
     { title = model.title
-    , body = [ toHtml bodyView ]
+    , body =
+        -- let
+        -- validate :
+        [ layout [ width fill ]
+            (Element.column [ width fill, Constants.font, Constants.space, padding 50 ]
+                (barView model.name model.title model.status <|
+                    parseView Pages.Welcome.view [ spacing 10 ] <|
+                        []
+                )
+            )
+        ]
     }

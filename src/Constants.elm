@@ -1,4 +1,4 @@
-module Parts.Constants exposing (..)
+module Constants exposing (..)
 
 import Element exposing (Attribute, spacing) 
 import Element.Font as Font
@@ -17,4 +17,4 @@ font =
 
 space : Attribute Msg
 space =
-    spacing 30
+    spacing 40
